@@ -15,7 +15,6 @@ describe "show page" do
   it "shows surgery title, day of week, and operating room number" do
     visit surgery_path(@surgery_1.id)
 
-    save_and_open_page
     expect(page).to have_content("Surgery")
     expect(page).to have_content(@surgery_1.title)
     expect(page).to have_content(@surgery_1.day_of_week)
@@ -24,5 +23,31 @@ describe "show page" do
     expect(page).to have_content("Surgery type:")
     expect(page).to have_content("Day of week:")
     expect(page).to have_content("Operating room:")
+  end
+
+  it "shows the names of all the doctors performing the surgery" do
+    visit surgery_path(@surgery_1.id)
+
+    expect(page).to have_content("Doctors")
+    expect(page).to have_content(@doctor_1.name)
+    expect(page).to have_content(@doctor_1.years_practiced)
+    expect(page).to have_content(@doctor_2.name)
+    expect(page).to have_content(@doctor_2.years_practiced)
+  end
+
+  it "shows the most and least experienced doctor" do
+    visit surgery_path(@surgery_1.id)
+
+    within("#least") do
+      expect(page).to have_content("Most experienced doctor")
+      expect(page).to have_content(@doctor_1.name)
+      expect(page).to have_content(@doctor_1.years_practiced)
+    end
+
+    within("#most") do
+      expect(page).to have_content("Least experienced doctor")
+      expect(page).to have_content(@doctor_2.name)
+      expect(page).to have_content(@doctor_2.years_practiced)
+    end
   end
 end

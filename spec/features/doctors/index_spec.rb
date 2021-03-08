@@ -13,9 +13,8 @@ describe "index page" do
   end
 
   it "shows all doctor information listed by years of experience" do
-    visit doctors_path 
+    visit doctors_path
 
-    save_and_open_page
     expect(page).to have_content("Doctors")
     expect(@doctor_3.name).to appear_before(@doctor_2.name)
     expect(@doctor_2.name).to appear_before(@doctor_1.name)

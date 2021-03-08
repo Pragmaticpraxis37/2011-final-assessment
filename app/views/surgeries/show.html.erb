@@ -2,3 +2,9 @@
 <p>Surgery type:</p><%= @surgery.title %><br>
 <p>Day of week:</p><%= @surgery.day_of_week %><br>
 <p>Operating room:</p><%= @surgery.operating_room %><br>
+<br>
+<h1>Doctors</h1>
+<% @surgery.all_surgical_doctors.each do |doctor| %>
+  <%= doctor.name %>
+  <%= doctor.years_practiced %>
+<% end %>
