@@ -27,11 +27,11 @@ describe Surgery, type: :model do
     end
 
     it "#least_experienced_doctor" do
-      expect(@surgery_1.least_experienced_doctor).to eq(5)
+      expect(@surgery_1.least_experienced_doctor.first.years_practiced).to eq(5)
     end
 
-    it "#most_experienced_doctor" do 
-      expect(@surgery_1.least_experienced_doctor).to eq(10)
+    it "#most_experienced_doctor" do
+      expect(@surgery_1.most_experienced_doctor.first.years_practiced).to eq(10)
     end
   end
 end
