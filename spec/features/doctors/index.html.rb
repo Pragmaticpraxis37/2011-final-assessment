@@ -1,11 +1,6 @@
 require "rails_helper"
 
-describe DoctorSurgery, type: :model do
-  describe "relationships" do
-    it {should belong_to(:doctor)}
-    it {should belong_to(:surgery)}
-  end
-
+describe "index page" do
   before :each do
     @doctor_1 = Doctor.create!(name: "Doc 1", years_practiced: 5, university: "Big U")
     @doctor_2 = Doctor.create!(name: "Doc 2", years_practiced: 10, university: "Little U")
@@ -17,7 +12,13 @@ describe DoctorSurgery, type: :model do
     @surg_1_doc_2 = DoctorSurgery.create!(doctor_id:@doctor_2.id, surgery_id: @surgery_1.id)
   end
 
-  it "#add_doctor" do
-    
+  it "shows all doctor information listed by years of experience" do
+    visit
+
+    save_and_open_page
+    expect(page).to have_content("Doctors")
+    expect(@doctor_3.name).to appear_before(@doctor_2.name)
+    expect(@doctor_2.name).to appear_before(@doctor_1.name)
+
   end
 end
