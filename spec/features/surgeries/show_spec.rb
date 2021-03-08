@@ -13,7 +13,7 @@ describe "show page" do
   end
 
   it "shows surgery title, day of week, and operating room number" do
-    visit surgery_path
+    visit surgery_path(@surgery_1.id)
 
     save_and_open_page
     expect(page).to have_content("Surgery")
@@ -21,5 +21,8 @@ describe "show page" do
     expect(page).to have_content(@surgery_1.day_of_week)
     expect(page).to have_content(@surgery_1.operating_room)
     expect(page).to have_no_content(@surgery_2.title)
+    expect(page).to have_content("Surgery type:")
+    expect(page).to have_content("Day of week:")
+    expect(page).to have_content("Operating room:")
   end
 end
