@@ -52,4 +52,17 @@ describe "show page" do
       expect(page).to have_content(@doctor_2.years_practiced)
     end
   end
+
+  it "allows a doctor to be added to the surgery" do
+    visit surgery_path(@surgery_1.id)
+
+    expect(page).to have_no_content(@doctor_3.name)
+    expect(page).to have_content("Add A Doctor To This Surgery")
+
+    fill_in "Add doctor", with: "Doc 3"
+
+    click_button "Submit"
+
+    expect(page).to have_content(@doctor_3.name)
+  end
 end
