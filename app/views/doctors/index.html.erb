@@ -1,0 +1,6 @@
+<h1>Doctors</h1>
+<% @doctors.years_practicing.each do |doctor| %>
+  <p><%= doctor.name %></p>
+  <p><%= doctor.years_practiced %></p>
+  <p><%= doctor.university %></p><br>
+<% end %>

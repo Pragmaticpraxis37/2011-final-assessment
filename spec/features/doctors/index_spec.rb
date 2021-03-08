@@ -13,7 +13,7 @@ describe "index page" do
   end
 
   it "shows all doctor information listed by years of experience" do
-    visit
+    visit doctors_path 
 
     save_and_open_page
     expect(page).to have_content("Doctors")
