@@ -38,14 +38,16 @@ describe "show page" do
   it "shows the most and least experienced doctor" do
     visit surgery_path(@surgery_1.id)
 
+    save_and_open_page
+
     within("#least") do
-      expect(page).to have_content("Most experienced doctor")
+      expect(page).to have_content("Least experienced doctor")
       expect(page).to have_content(@doctor_1.name)
       expect(page).to have_content(@doctor_1.years_practiced)
     end
 
     within("#most") do
-      expect(page).to have_content("Least experienced doctor")
+      expect(page).to have_content("Most experienced doctor")
       expect(page).to have_content(@doctor_2.name)
       expect(page).to have_content(@doctor_2.years_practiced)
     end

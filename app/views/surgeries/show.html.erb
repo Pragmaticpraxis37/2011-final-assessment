@@ -8,3 +8,13 @@
   <%= doctor.name %>
   <%= doctor.years_practiced %>
 <% end %>
+<section id="least">
+<p>Least experienced doctor</p>
+<%= @surgery.least_experienced_doctor.first.name %><br>
+<%= @surgery.least_experienced_doctor.first.years_practiced %><br>
+</section>
+<section id="most">
+<p>Most experienced doctor</p>
+<%= @surgery.most_experienced_doctor.first.name %><br>
+<%= @surgery.most_experienced_doctor.first.years_practiced %><br>
+</section>
