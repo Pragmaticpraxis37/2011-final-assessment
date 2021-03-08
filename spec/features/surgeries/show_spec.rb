@@ -61,6 +61,7 @@ describe "show page" do
 
     click_button "Search"
 
+    expect(page).to have_current_path(surgery_path(@surgery_1.id))
     expect(page).to have_content(@doctor_3.name)
   end
 end
